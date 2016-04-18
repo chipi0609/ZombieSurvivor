@@ -13,6 +13,10 @@ public class ZombieSurvivor {
     this.currentPlayer = 0;
   }
   
+  public int[] getPlayerScores() {
+	  return playerScores;
+  }
+ 
   public boolean isGameOver() {
     int index = Util.findIndexGreaterThanOrEqualTo(playerScores, ENDGAME_SCORE);
     return index >= 0;

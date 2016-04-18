@@ -22,7 +22,7 @@ public class Util {
 
 	public static int findIndexGreaterThanOrEqualTo(int[] numbers, int target) {
 		for (int i = 0; i < numbers.length; i++) {
-			if(numbers[i] == target) {
+			if(numbers[i] >= target) {
 				return i;
 			}
 		}

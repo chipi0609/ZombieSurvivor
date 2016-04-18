@@ -33,6 +33,7 @@ public class Main {
     
     if(s.equals("s")){
     	System.out.println("You scored: " + turn.getCurrentScore());
+    	return;
     } else {
     	playTurn(turn);
     }
@@ -50,13 +51,26 @@ public class Main {
 	  int num = reader.nextInt();
 	  
 	  ZombieSurvivor zs = new ZombieSurvivor(num);
-	  int[] score = new int[num];
+	  int[] scores = new int[num];
+	  Arrays.fill(scores, 0);
 	  
 	  while(! zs.isGameOver()) {
 		  int currentPlayer = zs.getCurrentPlayer();
 		  System.out.println("It's Player " + currentPlayer + "'s turn!");
-		  playTurn(zs.startPlayerTurn());
+		  
+		  Turn turn = zs.startPlayerTurn();
+		  playTurn(turn);
+		  zs.scorePlayerTurn(turn);
+		  
+		  scores = zs.getPlayerScores();
+		  
+		  System.out.println("Current scores: " + Arrays.toString(scores));
+		  zs.nextPlayer();
 	  }
+	  
+	  System.out.println();
+	  System.out.println("You have beaten the zombies!");
+	  System.out.println("The winner is Player " + zs.getWinningPlayer());
   }
 
 }
